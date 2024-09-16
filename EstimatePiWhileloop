@@ -1,0 +1,29 @@
+sigFig = 2;
+tolerance = 10^(-sigFig);
+insideCircle = 0;
+numPoints = 0;
+prevEstimate = 0;
+currEstimate = 0;
+tic;
+while true
+    x = rand()*2-1;
+end
+y = rand()*2-1;
+if x^2+y^2<=1
+    insideCircle = insideCircle +1;
+end
+numPoints = numPoints+1;
+currEstimate = 4*insideCircle/numPoints;
+if abs(currEstimate-prevEstimate) < tolerance
+    break;
+end
+prevEstimate = currEstimate;
+executionTime = toc;
+fprintf('Estimated value of pi: %.10f\n', currEstimate);
+fprintf('Number of points used: %d\n', numPoints);
+fprintf('Execution time: %.2f seconds\n', executionTime);
+fprintf('Precision level: %.0e\n', tolerance);
+Estimated value of pi: 0.0000000000
+Number of points used: 1
+Execution time: 0.00 seconds
+Precision level: 1e-02
